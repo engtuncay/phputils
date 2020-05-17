@@ -1,6 +1,8 @@
 <?php
 /**
 * Simple helper to debug to the console
+ *
+ * to
 *
 * @param $data object, array, string $data
 * @param $context string  Optional a description.
