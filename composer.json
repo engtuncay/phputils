@@ -1,0 +1,39 @@
+{
+  "name": "engtuncay/phputils",
+  "type": "library",
+  "description": "Genel Yardımcı PHP Kütüphaneleri",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "keywords": [
+    "utils"
+    ],
+  "homepage": "https://github.com/engtuncay/phputils",
+  "authors": [
+    {
+      "name": "engtuncay",
+      "email": "tuncayorak@gmail.com",
+      "homepage": ""
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/engtuncay/phputils/issues"
+  },
+  "require": {
+    "php": "~5.4|~7.0",
+    "symfony/polyfill-iconv": "^1.11"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.8|~5.0",
+    "squizlabs/php_codesniffer": "~2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "engtuncay\\phputils\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "engtuncay\\Tests\\": "tests/Teknomavi/Tests"
+    }
+  }
+}
