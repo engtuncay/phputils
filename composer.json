@@ -6,7 +6,7 @@
   "license": "MIT",
   "keywords": [
     "utils"
-    ],
+  ],
   "homepage": "https://github.com/engtuncay/phputils",
   "authors": [
     {
@@ -18,7 +18,7 @@
     "issues": "https://github.com/engtuncay/phputils/issues"
   },
   "require": {
-    "php": "~7.0",
+    "php": ">7.0",
     "symfony/polyfill-iconv": "^1.11"
   },
   "require-dev": {
@@ -32,7 +32,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "engtuncay\\Tests\\": "tests/Teknomavi/Tests"
+      "engtuncay\\Tests\\": "tests/engtuncay/Tests"
     }
   }
 }
