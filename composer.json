@@ -18,21 +18,12 @@
     "issues": "https://github.com/engtuncay/phputils/issues"
   },
   "require": {
-    "php": ">= 7.0",
-    "symfony/polyfill-iconv": "^1.11"
+    "php": "^7.4 || ^8.0"
   },
-  "require-dev": {
-    "phpunit/phpunit": "~4.8|~5.0",
-    "squizlabs/php_codesniffer": "~2.0"
-  },
+  "require-dev": {},
   "autoload": {
     "psr-4": {
       "engtuncay\\phputils\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "engtuncay\\Tests\\": "tests/engtuncay/Tests"
     }
   }
 }
