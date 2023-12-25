@@ -1,5 +1,1 @@
-.idea
-vendor
-composer.lock
-composer.bat
-composer.phar
+/vendor/

@@ -1,29 +1,23 @@
 {
-  "name": "engtuncay/phputils",
-  "type": "library",
-  "description": "Genel Yardımcı PHP Kütüphaneleri",
-  "minimum-stability": "dev",
-  "license": "MIT",
-  "keywords": [
-    "utils"
-  ],
-  "homepage": "https://github.com/engtuncay/phputils",
-  "authors": [
-    {
-      "name": "engtuncay",
-      "email": "tuncayorak@gmail.com"
-    }
-  ],
-  "support": {
-    "issues": "https://github.com/engtuncay/phputils/issues"
-  },
-  "require": {
-    "php": "^7.4 || ^8.0"
-  },
-  "require-dev": {},
-  "autoload": {
-    "psr-4": {
-      "engtuncay\\phputils\\": "src/"
-    }
-  }
+    "name": "engtuncay/phputils",
+    "description": "php utility classes",
+    "type": "library",
+    "require": {
+        "php": ">7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Engtuncay\\Phputils\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tuncay",
+            "email": "tunc270@gmail.com"
+        }
+    ]
 }
