@@ -1,5 +1,5 @@
 <?php
-namespace engtuncay\phputils\pdo;
+namespace engtuncay\phputils;
 
 use PDOException;
 use PDO;
