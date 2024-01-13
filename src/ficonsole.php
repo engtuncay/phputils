@@ -1,16 +1,18 @@
 <?php
 namespace Engtuncay\Phputils;
+
 /**
 * Simple helper to debug to the console
  *
  * to
 *
 * @param $data object, array, string $data
-* @param $context string  Optional a description.
+* @param $context string Optional a description.
 *
 * @return string
 */
-function debug_to_console($data, $context = 'Debug in Console') {
+function debug_to_console($data, $context = 'Debug in Console')
+{
 
 // Buffering to solve problems frameworks, like header() in this and not a solid return.
 ob_start();
