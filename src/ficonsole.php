@@ -1,4 +1,5 @@
 <?php
+namespace Engtuncay\Phputils;
 /**
 * Simple helper to debug to the console
  *

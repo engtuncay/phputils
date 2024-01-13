@@ -1,4 +1,5 @@
 <?php
+namespace Engtuncay\Phputils;
 /**
  * Dump PHP variables to the js console
  * @param: (mixed)
