@@ -25,6 +25,24 @@ class FiPdo extends PDO
     }
   }
 
+    /**
+     * @return mixed
+     */
+    public function getDbName()
+    {
+        return $this->dbName;
+    }
+
+    /**
+     * @param mixed $dbName
+     */
+    public function setDbName($dbName): void
+    {
+        $this->dbName = $dbName;
+    }
+
+
+
   /**  
    * injection engellenmesi lazım
    */

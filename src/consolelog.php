@@ -1,24 +1,24 @@
 <?php
-namespace Engtuncay\Phputils;
-/**
- * Dump PHP variables to the js console
- * @param: (mixed)
- */
-function console_log()
-{
-    $argv = func_get_args();
-    $json = __ConsoleLog__::getFormattedJson($argv);
-
-    // add the js helper script if not already included
-    if (!__ConsoleLog__::$script_included) {
-        echo "<script>" . __ConsoleLog__::getJsPrettyPrintFunction() . "</script>";
-        __ConsoleLog__::$script_included = true;
-    }
-
-    __ConsoleLog__::callJsPrettyPrint($json);
-}
-
-// Wrapper class for console_log
+//namespace Engtuncay\Phputils;
+///**
+// * Dump PHP variables to the js console
+// * @param: (mixed)
+// */
+//function console_log()
+//{
+//    $argv = func_get_args();
+//    $json = __ConsoleLog__::getFormattedJson($argv);
+//
+//    // add the js helper script if not already included
+//    if (!__ConsoleLog__::$script_included) {
+//        echo "<script>" . __ConsoleLog__::getJsPrettyPrintFunction() . "</script>";
+//        __ConsoleLog__::$script_included = true;
+//    }
+//
+//    __ConsoleLog__::callJsPrettyPrint($json);
+//}
+//
+//// Wrapper class for console_log
 class __ConsoleLog__
 {
     public static $script_included = false;
@@ -126,7 +126,7 @@ class __ConsoleLog__
                     breakBefore: /\]|\}/gm,
                     argsKey: /(\s{2})\"([0-9]*)\"( →)/gm
                 };
-        
+
             function getStyle(type, indentLevel) {
                 var baseStyle = styles[type].base;
                 var computedStyle = '';
@@ -136,7 +136,7 @@ class __ConsoleLog__
                 }
                 return baseStyle + computedStyle;
             }
-        
+
             function addStyles(match, offset, str, consoleArgs){
                 var replacement = '%c%s%c';
                 var lastChar = match[match.length - 1];
@@ -171,35 +171,35 @@ class __ConsoleLog__
                 consoleArgs.push(style, match, '');
                 return replacement;
             }
-        
+
             function getIndetationLevel(str) {
                 var openingSymbolsCount = (str.match(/\{|\[/gm) || []).length;
                 var closingSymbolsCount = (str.match(/\}|\]/gm) || []).length;
                 return openingSymbolsCount - closingSymbolsCount;
             }
-        
+
             function breakAndIndentBefore(match, offset, str, indentationStr) {
                 var indentLevel = getIndetationLevel(str.substr(0, offset + 1));
                 var indent = getIndent(indentLevel, indentationStr);
                 return '\\n' + indent + match;
             }
-        
+
             function breakAndIndentAfter(match, offset, str, indentationStr) {
                 var indentLevel = getIndetationLevel(str.substr(0, offset + 1));
                 var indent = getIndent(indentLevel, indentationStr);
                 return match + '\\n' + indent;
             }
-        
+
             function getIndent(level, str) {
                 return Array(level).fill(str).join('');
             }
-        
+
             var jsonString = JSON.stringify(jsonDump).replace(/^\{|\}$/gm, '')
                 .replace(regexes.breakAfter, function(match, offset, str) { return breakAndIndentAfter(match, offset, str, indentationStr) })
                 .replace(regexes.breakBefore, function(match, offset, str) { return breakAndIndentBefore(match, offset, str, indentationStr)})
                 .replace(regexes.stylable, function(match, offset, str) { return addStyles(match, offset, str, consoleArgs) });
-        
-        
+
+
             consoleArgs.unshift(jsonString);
             console.group('PHP');
             console.log.apply(this, consoleArgs);
@@ -208,4 +208,5 @@ class __ConsoleLog__
         </script>";
     }
 }
+
 ?>
