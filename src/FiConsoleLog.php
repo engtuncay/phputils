@@ -1,5 +1,6 @@
 <?php
-//namespace Engtuncay\Phputils;
+namespace Engtuncay\Phputils;
+
 ///**
 // * Dump PHP variables to the js console
 // * @param: (mixed)
@@ -19,7 +20,7 @@
 //}
 //
 //// Wrapper class for console_log
-class __ConsoleLog__
+class FiConsoleLog
 {
     public static $script_included = false;
 
