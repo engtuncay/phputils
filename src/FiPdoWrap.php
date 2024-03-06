@@ -28,8 +28,15 @@ class FiPdoWrap
       $this->dbConfig['pass']
     );
   }
-  function __construct($host, $dbName, $user, $pass, $charset = 'utf8')
+  
+  function __construct($pdo)
   {
+    if(!is_null($pdo)){
+      $this->pdo = $pdo;
+    }
+  }
+
+  function initPdo($host, $dbName, $user, $pass, $charset = 'utf8'){
     $connString = 'mysql:host=' . $host . ';' . 'dbname=' . $dbName;
 
     $options = array(
