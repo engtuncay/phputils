@@ -16,6 +16,7 @@ class FiPdoWrap
   );
   public $pdo;
   public $error;
+  public $boConn;
 
   //
   // CONFIG
@@ -29,7 +30,7 @@ class FiPdoWrap
     );
   }
   
-  function __construct($pdo)
+  function __construct($pdo = null)
   {
     if(!is_null($pdo)){
       $this->pdo = $pdo;
@@ -52,8 +53,10 @@ class FiPdoWrap
       //$this->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
       $this->pdo->query('SET CHARACTER SET ' . $charset);
       $this->pdo->query('SET NAMES ' . $charset);
+      $this->boConn = true;
     } catch (PDOException $e) {
       $this->error = $e->getMessage();
+      $this->boConn = false;
     }
 
     // $this->dbConfig['host'] = $host;
