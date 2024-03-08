@@ -15,7 +15,7 @@ class FiPdoWrap
     'pdo' => null
   );
   public $pdo;
-  public $error;
+  public ?string $error = null;
   public $boConn;
 
   //

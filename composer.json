@@ -3,7 +3,7 @@
   "description": "tunc php utility classes",
   "type": "library",
   "require": {
-    "php": ">=7.1"
+    "php": ">=7.4"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.0"
