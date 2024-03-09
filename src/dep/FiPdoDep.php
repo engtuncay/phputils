@@ -1,13 +1,13 @@
 <?php
-namespace Engtuncay\Phputils;
+namespace Engtuncay\Phputils\dep;
 
-use PDOException;
 use PDO;
+use PDOException;
 
 /**
  * FiPdo Extend PDO
  */
-class FiPdo extends PDO
+class FiPdoDep extends PDO
 {
   private $dbName;
 
@@ -43,7 +43,7 @@ class FiPdo extends PDO
 
 
 
-  /**  
+  /**
    * injection engellenmesi lazım
    */
   public function from($tableName)

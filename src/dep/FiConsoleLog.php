@@ -1,5 +1,5 @@
 <?php
-namespace Engtuncay\Phputils;
+namespace Engtuncay\Phputils\dep;
 
 ///**
 // * Dump PHP variables to the js console

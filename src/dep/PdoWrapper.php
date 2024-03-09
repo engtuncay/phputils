@@ -1,10 +1,10 @@
 <?php
-namespace Engtuncay\Phputils;
+namespace Engtuncay\Phputils\dep;
 
-use PDOException;
 use PDO;
+use PDOException;
 
-class FiPdoWrap
+class PdoWrapper
 {
   // Props
   private $dbConfig = array(
@@ -15,8 +15,7 @@ class FiPdoWrap
     'pdo' => null
   );
   public $pdo;
-  public ?string $error = null;
-  public $boConn;
+  public $error;
 
   //
   // CONFIG
@@ -29,15 +28,8 @@ class FiPdoWrap
       $this->dbConfig['pass']
     );
   }
-  
-  function __construct($pdo = null)
+  function __construct($host, $dbName, $user, $pass, $charset = 'utf8')
   {
-    if(!is_null($pdo)){
-      $this->pdo = $pdo;
-    }
-  }
-
-  function initPdo($host, $dbName, $user, $pass, $charset = 'utf8'){
     $connString = 'mysql:host=' . $host . ';' . 'dbname=' . $dbName;
 
     $options = array(
@@ -53,10 +45,8 @@ class FiPdoWrap
       //$this->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
       $this->pdo->query('SET CHARACTER SET ' . $charset);
       $this->pdo->query('SET NAMES ' . $charset);
-      $this->boConn = true;
     } catch (PDOException $e) {
       $this->error = $e->getMessage();
-      $this->boConn = false;
     }
 
     // $this->dbConfig['host'] = $host;
@@ -91,8 +81,7 @@ class FiPdoWrap
       $placeholders = $placeholders . $column . ' = ?, ';
     $placeholders = substr($placeholders, 0, -2);
 
-    $stmt = $this->pdo->prepare('INSERT INTO ' . $table . ' SET ' . $placeholders);
-    foreach ($rowdicts as $rowdict) {
+    $stmt = $this->pdo->prepare('INSERT INTO ' . $table . ' SET ' . $placeholders); foreach ($rowdicts as $rowdict) {
       $vcount = 0;
       foreach ($rowdict as $value) {
         $vcount++;
