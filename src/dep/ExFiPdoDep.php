@@ -7,7 +7,7 @@ use PDOException;
 /**
  * FiPdo Extend PDO
  */
-class FiPdoDep extends PDO
+class ExFiPdoDep extends PDO
 {
   private $dbName;
 
