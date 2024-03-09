@@ -2,10 +2,26 @@
 
 namespace Engtuncay\Phputils\core;
 
+/**
+ * Class which wraps an array for utility
+ */
 class FiKeyBean
 {
-    public function hello()
+    public array $arrParams = [];
+    public function put($key,$value)
     {
-        echo 'hello';
+        $this->arrParams[$key] = $value;
     }
+
+    public function getArrParams(): array
+    {
+        return $this->arrParams;
+    }
+
+    public function setArrParams(array $arrParams): void
+    {
+        $this->arrParams = $arrParams;
+    }
+
+
 }

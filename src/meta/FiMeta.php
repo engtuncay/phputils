@@ -9,21 +9,21 @@ class FiMeta
      */
     private ?string $txKey;
 
-	private ?string $txValue;
+    private ?string $txValue = null;
 
-	/**
+    /**
      * LnCode (LnKodu)
      * <p>
      * Key Meta Karşılık Gelen Integer Kod varsa
      */
-	private ?int $lnKey;
+    private ?int $lnKey;
 
-	/**
+    /**
      * Açıklama (Description) gibi düşünebiliriz
      */
-	private ?string $txLabel;
+    private ?string $txLabel;
 
-	private ?string $txType = null;
+    private ?string $txType = null;
 
     /**
      * @param string|null $txKey
@@ -37,11 +37,11 @@ class FiMeta
      * txKey boş ise lnkey dönsün diye de mekanizma kurulabilir.
      * @return
      */
-	//@Override
-	public function toString() : ?string {
+    //@Override
+    public function toString(): ?string
+    {
         return $this->txKey;
-	}
-
+    }
 
 
     // Getter and Setters
@@ -95,7 +95,6 @@ class FiMeta
     {
         $this->txType = $txType;
     }
-
 
 
 }
