@@ -2,6 +2,7 @@
   "name": "engtuncay/phputils",
   "description": "tunc php utility classes",
   "type": "library",
+  "version": "0.0.17",
   "require": {
     "php": ">=7.4"
   },
