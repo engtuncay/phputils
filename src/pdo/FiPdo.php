@@ -1,143 +1,172 @@
 <?php
 namespace Engtuncay\Phputils\pdo;
 
-use PDO;
 use PDOException;
+use PDO;
 
-class FiPdo
+/**
+ * Pdo Extend Helper Class
+ * <br/>
+ * 2024-06-10
+ *
+ */
+class FiPdo extends PDO
 {
-  // Props
-  private $dbConfig = array(
-    'host' => null,
-    'name' => null,
-    'user' => null,
-    'pass' => null,
-    'pdo' => null
-  );
-  public $pdo;
-  public ?string $error = null;
-  public $boConn;
+  public $debug = false;
+  public $boExecResult;
 
-  //
-  // CONFIG
-  private function buildPDO()
+  /**
+   * shows whether or not there is a connection
+   * 
+   * tr: bağlantı kurulup kurulmadığını gösterir.
+   */
+  public $boConnection;
+
+  public PDOException $pdoException;
+
+  public function __construct($host, $dbname, $username, $password, $charset = 'utf8')
   {
-    $this->pdo = new PDO(
-      'mysql:host=' . $this->dbConfig['host'] . ';' .
-      'dbname=' . $this->dbConfig['name'],
-      $this->dbConfig['user'],
-      $this->dbConfig['pass']
-    );
-  }
-  
-  function __construct($pdo = null)
-  {
-    if(!is_null($pdo)){
-      $this->pdo = $pdo;
-    }
-  }
-
-  function initPdo($host, $dbName, $user, $pass, $charset = 'utf8'){
-    $connString = 'mysql:host=' . $host . ';' . 'dbname=' . $dbName;
-
-    $options = array(
-      PDO::ATTR_PERSISTENT => true,
-      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-    );
-
-    // Create a new PDO instanace
     try {
-      $this->pdo = new PDO($connString, $user, $pass, $options);
-      // tek tek ayarlamak istenirse
-      //$this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      //$this->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-      $this->pdo->query('SET CHARACTER SET ' . $charset);
-      $this->pdo->query('SET NAMES ' . $charset);
-      $this->boConn = true;
+      parent::__construct('mysql:host=' . $host . ';dbname=' . $dbname, $username, $password);
+      $this->dbName = $dbname;
+      $this->query('SET CHARACTER SET ' . $charset);
+      $this->query('SET NAMES ' . $charset);
+      $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $this->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+      $this->boConnection = true;
     } catch (PDOException $e) {
-      $this->error = $e->getMessage();
-      $this->boConn = false;
-    }
-
-    // $this->dbConfig['host'] = $host;
-    // $this->dbConfig['name'] = $dbName;
-    // $this->dbConfig['user'] = $user;
-    // $this->dbConfig['pass'] = $pass;
-    // $this->buildPDO();
-  }
-
-
-
-
-
-  public function setConfig($args)
-  {
-    // $keys = array_keys($db);
-    // foreach ($keys as $key)
-    //   if (isset($args[$key]))
-    //     $this->dbConfig[$key] = $args[$key];
-    // $this->buildPDO();
-  }
-
-  //
-  // INSERT
-  private function insert($table, $columns, $rowdicts)
-  {
-    // columns = array of row columns
-    // rowdicts = array of dictionaries
-    $placeholders = '';
-
-    foreach ($columns as $column)
-      $placeholders = $placeholders . $column . ' = ?, ';
-    $placeholders = substr($placeholders, 0, -2);
-
-    $stmt = $this->pdo->prepare('INSERT INTO ' . $table . ' SET ' . $placeholders);
-    foreach ($rowdicts as $rowdict) {
-      $vcount = 0;
-      foreach ($rowdict as $value) {
-        $vcount++;
-        $stmt->bindValue($vcount, $value);
-      }
-      $stmt->execute();
+      //$this->showError($e);
+      $this->boExecResult = false;
+      $this->pdoException = $e;
+      $this->boConnection = false;
     }
   }
-  public function insertRows($table, $rowdicts)
+
+  public function from($tableName)
   {
-    $columns = array_keys($rowdicts[0]);
-    $this->insert($table, $columns, $rowdicts);
-  }
-  public function insertRow($table, $rowdict)
-  {
-    $columns = array_keys($rowdict);
-    $this->insert($table, $columns, array($rowdict));
+    $this->sql = 'SELECT * FROM ' . $tableName;
+    $this->tableName = $tableName;
+    return $this;
   }
 
-  // public function getDbConfig(): null
+  public function select($columns)
+  {
+    $this->sql = str_replace(' * ', ' ' . $columns . ' ', $this->sql);
+    return $this;
+  }
+
+  /**
+   * Belirtilen tablonun auto_increment değerini ayarlar
+   *
+   * @param $tableName
+   * @return mixed
+   */
+  public function setAutoIncrement($tableName, $ai = 1)
+  {
+    return $this->query("ALTER TABLE `{$tableName}` AUTO_INCREMENT = {$ai}")->fetch();
+  }
+
+
+  /**
+   * Get the value of boExecResult
+   */
+  public function getBoExecResult()
+  {
+    return $this->boExecResult;
+  }
+
+  public function getBoExecResultNtn()
+  {
+    if ($this->boExecResult == null) {
+      return false;
+    }
+
+    return $this->boExecResult;
+  }
+
+
+  /**
+   * Set the value of boExecResult
+   *
+   * @return  self
+   */
+  public function setBoExecResult($boExecResult)
+  {
+    $this->boExecResult = $boExecResult;
+
+    return $this;
+  }
+
+  // public function exec($boExecResult)
   // {
-  //   return $this->dbConfig;
+  //   $this->boExecResult = $boExecResult;
+
+  //   return $this;
   // }
 
-  public function getPdo(): PDO
+  /**
+   * Execute an SQL statement and return the number of affected rows
+   * PDO::exec() executes an SQL statement in a single function call, returning the number of rows affected by the statement.
+   *
+   * @param string $statement The SQL statement to prepare and execute. Data inside the query should be properly escaped .
+   * @return bool|int PDO::exec() returns the number of rows that were modified or deleted by the SQL statement you issued. If no rows were affected, PDO::exec() returns `0`.
+   * The following example incorrectly relies on the return value of PDO::exec(), wherein a statement that affected 0 rows results in a call to die():
+   */
+  public function execFi(string $statement)
   {
-    return $this->pdo;
+    $result = null;
+
+    // if ($this->boConnection == null || $this->boConnection == false) {
+    //   echo "connection is not established";
+    //   return false;
+    // }
+
+    try {
+      $result = parent::exec($statement);
+      $this->boExecResult = true;
+      return $result;
+    } catch (PDOException $e) {
+      $this->boExecResult = false;
+      $this->pdoException = $e;
+      return $result;
+    }
   }
 
-  public function getError() //: null
+  public function execFiWitEchoErr(string $statement)
   {
-    return $this->error;
+    $result = null;
+    try {
+      $result = parent::exec($statement);
+      $this->boExecResult = true;
+      return $result;
+    } catch (PDOException $e) {
+      $this->boExecResult = false;
+      $this->pdoException = $e;
+      echo $this->pdoException->getMessage();
+      return $result;
+    }
   }
+
+  public function getErrorMessage(): string
+  {
+    if ($this->pdoException != null) {
+      return $this->pdoException->getMessage();
+    }
+
+    return "";
+  }
+
+  public function bindFields($fields)
+  {
+    end($fields);
+    $lastField = key($fields);
+    $bindString = ' ';
+    foreach ($fields as $field => $data) {
+      $bindString .= $field . '=:' . $field;
+      $bindString .= ($field === $lastField ? ' ' : ',');
+    }
+    return $bindString;
+  }
+
 
 }
-
-
-// $db = new PDOwrapper( 'localhost', 'practice','root','root' );
-
-// $db->insertRow( 'Posts', array( 'title' => 'FINGERS CROSSED', 'content' => 'HMMMMMMMMMM' ) );
-// $db->insertRows( 'Posts', array(
-// 	array( 'title' => 'FINGERS CROSSED AGAIN', 'content' => 'HRMMM' ),
-// 	array( 'title' => 'OH BOY GOSH', 'content' => 'GEEEEEEEEE' ),
-// 	array( 'title' => 'I LIKE TURTLES', 'content' => 'TEE HEEEEEEEE' )
-// ) ); 
-
-
-?>
