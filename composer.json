@@ -1,6 +1,6 @@
 {
   "name": "engtuncay/phputils",
-  "description": "tunc php utility classes",
+  "description": "Tunc Php Utility Classes",
   "type": "library",
   "version": "0.0.22",
   "require": {
