@@ -1,5 +1,5 @@
 <?php
-namespace Engtuncay\Phputils;
+//namespace Engtuncay\Phputils\Dep;
 
 ///**
 //* Simple helper to debug to the console
@@ -23,5 +23,3 @@ namespace Engtuncay\Phputils;
 //
 //echo $output;
 //}
-
-?>

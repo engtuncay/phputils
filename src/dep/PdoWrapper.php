@@ -56,10 +56,6 @@ class PdoWrapper
     // $this->buildPDO();
   }
 
-
-
-
-
   public function setConfig($args)
   {
     // $keys = array_keys($db);
@@ -127,6 +123,3 @@ class PdoWrapper
 // 	array( 'title' => 'OH BOY GOSH', 'content' => 'GEEEEEEEEE' ),
 // 	array( 'title' => 'I LIKE TURTLES', 'content' => 'TEE HEEEEEEEE' )
 // ) ); 
-
-
-?>

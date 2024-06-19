@@ -1,5 +1,4 @@
 <?php
-
 namespace Engtuncay\Phputils\core;
 
 /**
