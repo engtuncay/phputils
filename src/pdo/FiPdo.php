@@ -42,18 +42,18 @@ class FiPdo extends PDO
     }
   }
 
-  public function from($tableName)
-  {
-    $this->sql = 'SELECT * FROM ' . $tableName;
-    $this->tableName = $tableName;
-    return $this;
-  }
+  // public function from($tableName)
+  // {
+  //   $this->sql = 'SELECT * FROM ' . $tableName;
+  //   $this->tableName = $tableName;
+  //   return $this;
+  // }
 
-  public function select($columns)
-  {
-    $this->sql = str_replace(' * ', ' ' . $columns . ' ', $this->sql);
-    return $this;
-  }
+  // public function select($columns)
+  // {
+  //   $this->sql = str_replace(' * ', ' ' . $columns . ' ', $this->sql);
+  //   return $this;
+  // }
 
   /**
    * Belirtilen tablonun auto_increment değerini ayarlar

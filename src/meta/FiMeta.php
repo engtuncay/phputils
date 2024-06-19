@@ -23,7 +23,7 @@ class FiMeta
      */
     private ?string $txLabel;
 
-    private ?string $txType = null;
+  //private ?string $txType = null;
 
     /**
      * @param string|null $txKey
@@ -86,15 +86,15 @@ class FiMeta
         $this->txLabel = $txLabel;
     }
 
-    public function getTxType(): ?string
-    {
-        return $this->txType;
-    }
+  // public function getTxType(): ?string
+  // {
+  //     return $this->txType;
+  // }
 
-    public function setTxType(?string $txType): void
-    {
-        $this->txType = $txType;
-    }
+  // public function setTxType(?string $txType): void
+  // {
+  //     $this->txType = $txType;
+  // }
 
 
 }
