@@ -33,9 +33,9 @@ class FiPdo extends PDO
       $this->query('SET NAMES ' . $charset);
       $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $this->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+      $this->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
       $this->boConnection = true;
     } catch (PDOException $e) {
-      //$this->showError($e);
       $this->boExecResult = false;
       $this->pdoException = $e;
       $this->boConnection = false;
@@ -166,6 +166,44 @@ class FiPdo extends PDO
       $bindString .= ($field === $lastField ? ' ' : ',');
     }
     return $bindString;
+  }
+
+  public function prepFetchOnly(string $sql): array
+  {
+    return $this->prepFetch($sql, null);
+  }
+
+  /**
+   * PDOStatement::fetch — Fetches the next row from a result set
+   */
+  public function prepFetch(string $sql, ?array $arrParam): array
+  {
+    $stmt = $this->prepare($sql);
+
+    if ($arrParam != null) {
+      $stmt->execute($arrParam);
+    } else {
+      $stmt->execute();
+    }
+
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+  }
+
+  /** 
+   * PDOStatement::fetchAll — Returns an array containing all of the result set rows
+   */
+  public function prepFetchAll(string $sql, ?array $arrParam): array
+  {
+    $stmt = $this->prepare($sql);
+
+    if ($arrParam != null) {
+      $stmt->execute($arrParam);
+    } else {
+      $stmt->execute();
+    }
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
 
