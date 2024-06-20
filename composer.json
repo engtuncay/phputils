@@ -2,12 +2,13 @@
   "name": "engtuncay/phputils",
   "description": "Tunc Php Utility Classes",
   "type": "library",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "require": {
     "php": ">=7.4"
   },
   "require-dev": {
-    "phpunit/phpunit": "^9.0"
+    "phpunit/phpunit": "^11.0",
+    "monolog/monolog": "^1.27"
   },
   "license": "MIT",
   "autoload": {
@@ -17,8 +18,8 @@
   },
   "authors": [
     {
-      "name": "Tuncay",
-      "email": "tunc270@gmail.com"
+      "name": "Tuncay Orak",
+      "email": "tuncayorak@gmail.com"
     }
   ]
 }

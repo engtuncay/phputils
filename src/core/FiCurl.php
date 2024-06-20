@@ -11,7 +11,7 @@ class FiCurl
 // Parameter description:
 // Method= POST, PUT, GET etc
 // Data= array("param" => "value") ==> index.php?param=value
-  public static function perform_http_request($method, $url, $data = false)
+  public static function requestHttp($method, $url, $data = false, $headerParams)
   {
     $curl = curl_init();
 
@@ -36,6 +36,16 @@ class FiCurl
 
     curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+
+    if (isset($headerParams)) {
+
+      curl_setopt($curl, CURLOPT_HTTPHEADER, $headerParams);
+    }
+
+    //array(
+    // 'Content-Type: application/xml',
+    // 'Connection: Keep-Alive'
+    // )
 
     $result = curl_exec($curl);
 
