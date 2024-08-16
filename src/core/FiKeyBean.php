@@ -4,7 +4,7 @@ namespace Engtuncay\Phputils\core;
 /**
  * Class which wraps an array for utility
  */
-class FiKeyBean
+class FiKeybean
 {
     public array $arrParams = [];
     public function put($key,$value)
