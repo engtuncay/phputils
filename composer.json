@@ -2,7 +2,7 @@
   "name": "engtuncay/phputils",
   "description": "Tunc Php Utility Classes",
   "type": "library",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "require": {
     "php": ">=7.4"
   },
