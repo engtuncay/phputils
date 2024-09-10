@@ -217,7 +217,7 @@ class FiPdo extends PDO
         $this->boDebug = $boDebug;
     }
 
-    public function isBoConnection(): bool
+    public function getBoConnection(): bool
     {
         return $this->boConnection;
     }
