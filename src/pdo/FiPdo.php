@@ -12,8 +12,9 @@ use PDO;
  */
 class FiPdo extends PDO
 {
-  public $debug = false;
-  public $boExecResult;
+  public bool $boDebug; // = false;
+  public bool $boExecResult;
+  private string $dbName;
 
   /**
    * shows whether or not there is a connection
@@ -206,5 +207,39 @@ class FiPdo extends PDO
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
+    public function getBoDebug(): bool
+    {
+        return $this->boDebug;
+    }
+
+    public function setBoDebug(bool $boDebug): void
+    {
+        $this->boDebug = $boDebug;
+    }
+
+    public function isBoConnection(): bool
+    {
+        return $this->boConnection;
+    }
+
+    public function setBoConnection(bool $boConnection): void
+    {
+        $this->boConnection = $boConnection;
+    }
+
+    public function getPdoException(): PDOException
+    {
+        return $this->pdoException;
+    }
+
+    public function setPdoException(PDOException $pdoException): void
+    {
+        $this->pdoException = $pdoException;
+    }
+
+    public function getDbName(): string
+    {
+        return $this->dbName;
+    }
 
 }
