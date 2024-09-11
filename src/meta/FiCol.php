@@ -94,8 +94,15 @@ class FiCol
 
     //public ?string $ficTxSqlFieldDefinition;
 
-
-
+    /**
+     * @param string|null $ofcTxFieldName
+     * @param string|null $ofcTxHeader
+     */
+    public function __construct(?string $ofcTxFieldName , ?string $ofcTxHeader = null)
+    {
+        $this->ofcTxFieldName = $ofcTxFieldName;
+        $this->ofcTxHeader = $ofcTxHeader;
+    }
 
 
 }
