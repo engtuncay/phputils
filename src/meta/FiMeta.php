@@ -7,9 +7,9 @@ class FiMeta
     /**
      * TxCode (TxKodu)
      */
-    public string $txKey;
+    public ?string $txKey;
 
-    public string $txValue;
+    public ?string $txValue;
 
     /**
      * LnCode (LnKodu)
@@ -43,7 +43,6 @@ class FiMeta
     {
         return $this->txKey;
     }
-
 
     // Getter and Setters
 
@@ -86,16 +85,6 @@ class FiMeta
     {
         $this->txLabel = $txLabel;
     }
-
-  // public function getTxType(): ?string
-  // {
-  //     return $this->txType;
-  // }
-
-  // public function setTxType(?string $txType): void
-  // {
-  //     $this->txType = $txType;
-  // }
 
 
 }

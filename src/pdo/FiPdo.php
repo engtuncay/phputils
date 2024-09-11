@@ -12,18 +12,18 @@ use PDO;
  */
 class FiPdo extends PDO
 {
-  public bool $boDebug; // = false;
-  public bool $boExecResult;
-  public string $dbName;
+  public ?bool $boDebug; // = false;
+  public ?bool $boExecResult;
+  public ?string $dbName;
 
   /**
    * shows whether or not there is a connection
    * 
    * tr: bağlantı kurulup kurulmadığını gösterir.
    */
-  public $boConnection;
+  public ?bool $boConnection;
 
-  public PDOException $pdoException;
+  public ?PDOException $pdoException;
 
   public function __construct($host, $dbname, $username, $password, $charset = 'utf8')
   {
@@ -207,39 +207,48 @@ class FiPdo extends PDO
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
-    public function getBoDebug(): bool
+    public function getBoDebug(): ?bool
     {
         return $this->boDebug;
     }
 
-    public function setBoDebug(bool $boDebug): void
+    public function setBoDebug(?bool $boDebug): void
     {
         $this->boDebug = $boDebug;
     }
 
-    public function getBoConnection(): bool
+    public function getDbName(): ?string
+    {
+        return $this->dbName;
+    }
+
+    public function setDbName(?string $dbName): void
+    {
+        $this->dbName = $dbName;
+    }
+
+    public function getBoConnection(): ?bool
     {
         return $this->boConnection;
     }
 
-    public function setBoConnection(bool $boConnection): void
+    public function setBoConnection(?bool $boConnection): void
     {
         $this->boConnection = $boConnection;
     }
 
-    public function getPdoException(): PDOException
+    public function getPdoException(): ?PDOException
     {
         return $this->pdoException;
     }
 
-    public function setPdoException(PDOException $pdoException): void
+    public function setPdoException(?PDOException $pdoException): void
     {
         $this->pdoException = $pdoException;
     }
 
-    public function getDbName(): string
-    {
-        return $this->dbName;
-    }
+
+
+
 
 }
