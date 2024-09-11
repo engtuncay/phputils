@@ -9,31 +9,31 @@ class FiCol
     /**
      * Alanın ismini (veritabanındaki veya objedeki refere ettiği alan ismi )
      */
-    public ?string $ofcTxFieldName;
+    public ?string $ofcTxFieldName = null;
 
     /**
      * Alanın başlık açıklaması ( tablo için sütün başlığı , form için label alanı değeri / excelde başlık )
      */
-    public ?string $ofcTxHeader;
+    public ?string $ofcTxHeader =  null;
 
-    public ?string $txLabel;
+    public ?string $txLabel = null;
 
     /**
      * Objedeki alan adı (fieldName) ile db deki alan adı aynı degilse kullanılır.
      */
-    public ?string $ofcTxDbFieldName;
+    public ?string $ofcTxDbFieldName  = null;
 
     /**
      * Col Id olması için konuldu - tekil kodu
      */
-    public ?string $txGuid;
+    public ?string $txGuid = null;
 
     //public ObjectProperty<Double> prefSize;
 
     //public ?integer printSize;
 
     // Alanın türünü belirtir (double,?string,date vs )
-    public ?string $colType; //OzColType
+    public ?string $colType  = null; //OzColType
 
     /**
      * Column Generic Type. Sütun nasıl bir tipte olduğunu gösterir. (Data Tipi degil)
@@ -43,44 +43,44 @@ class FiCol
     //public OzColType colGenType;
 
     // Formlarda default true olarak çalışır, false olursa düzenleme izni vermez
-    public ?bool $boEditable;
+    public ?bool $boEditable =null;
 
 
     /**
      * Formlarda gösterilmeyeceğini belirtir
      */
-    public ?bool $boHidden;
+    public ?bool $boHidden = null;
 
     // excelden sütunları ayarlarken opsiyonel sütunların belinmesi için (zorunlu degil) , vs.. (boRequired:false da kullanılabilirdi.)
     public ?bool $boOptional;
 
     // excelde sütunun bulunduğunu gösterir
-    public ?bool $boExist;
+    public ?bool $boExist = null;
 
     // Excel için true olursa sütunun olması gerektiğini gösterir
-    public ?bool $boRequired;
+    public ?bool $boRequired = null;
 
     // For Excel Reading, the field shows whether or not column exists in the excel
-    public ?bool $boEnabled;
+    public ?bool $boEnabled = null;
 
     // Reflection Field Alanlar
 
     // FiId
-    public ?string $ofiTxIdType;
+    public ?string $ofiTxIdType = null;
     // FiColumn
-    public ?bool $ofcBoUniqGro1;
-    public ?bool $ofcBoNullable;
-    public ?bool $ofcBoUnique;
-    public ?bool $ofcBoUtfSupport;
-    public ?string $ofcTxDefValue;
-    public ?string $ofcTxCollation;
-    public ?string $ofcTxTypeName;
-    public ?int $ofcLnLength;
-    public ?int $ofcLnPrecision;
-    public ?int $ofcLnScale;
-    public ?bool $ofcBoFilterLike;
+    public ?bool $ofcBoUniqGro1 = null;
+    public ?bool $ofcBoNullable = null;
+    public ?bool $ofcBoUnique = null;
+    public ?bool $ofcBoUtfSupport = null;
+    public ?string $ofcTxDefValue = null;
+    public ?string $ofcTxCollation = null;
+    public ?string $ofcTxTypeName = null;
+    public ?int $ofcLnLength = null;
+    public ?int $ofcLnPrecision = null;
+    public ?int $ofcLnScale = null;
+    public ?bool $ofcBoFilterLike = null;
 
-    public ?string $ofcTxFieldType;
+    public ?string $ofcTxFieldType = null;
 
     //FiTransient
 
@@ -90,11 +90,10 @@ class FiCol
     /**
      * alanın veritabanında olmadığını belirtir
      */
-    public ?bool $oftBoTransient;
+    public ?bool $oftBoTransient = null;
 
     //public ?string $ficTxSqlFieldDefinition;
 
-    // Getters and Setters
 
 
 

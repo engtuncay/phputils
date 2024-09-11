@@ -7,28 +7,28 @@ class FiMeta
     /**
      * TxCode (TxKodu)
      */
-    public ?string $txKey;
+    public ?string $txKey = null;
 
-    public ?string $txValue;
+    public ?string $txValue  = null;
 
     /**
      * LnCode (LnKodu)
      * <p>
      * Key Meta Karşılık Gelen Integer Kod varsa
      */
-    public ?int $lnKey;
+    public ?int $lnKey = null;
 
     /**
      * Açıklama (Description) gibi düşünebiliriz
      */
-    public ?string $txLabel;
+    public ?string $txLabel = null;
 
   //private ?string $txType = null;
 
     /**
      * @param string|null $txKey
      */
-    public function __construct(string $txKey = '', string $txValue = '')
+    public function __construct(string $txKey = '', string $txValue = null)
     {
         $this->txKey = $txKey;
         $this->txValue = $txValue;
