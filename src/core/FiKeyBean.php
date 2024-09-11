@@ -6,20 +6,31 @@ namespace Engtuncay\Phputils\core;
  */
 class FiKeybean
 {
-    public array $arrParams = [];
+    /**
+     * fkb is used as array, so it initialized.
+     *
+     * @var array
+     */
+    public array $params = [];
+
     public function put($key,$value)
     {
-        $this->arrParams[$key] = $value;
+        $this->params[$key] = $value;
     }
 
-    public function getArrParams(): array
+    public function getArr(): array
     {
-        return $this->arrParams;
+        return $this->params;
     }
 
-    public function setArrParams(array $arrParams): void
+    public function getParams(): array
     {
-        $this->arrParams = $arrParams;
+        return $this->params;
+    }
+
+    public function setParams(array $params): void
+    {
+        $this->params = $params;
     }
 
 

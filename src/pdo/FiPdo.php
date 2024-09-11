@@ -14,7 +14,7 @@ class FiPdo extends PDO
 {
   public bool $boDebug; // = false;
   public bool $boExecResult;
-  private string $dbName;
+  public string $dbName;
 
   /**
    * shows whether or not there is a connection
