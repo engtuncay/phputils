@@ -14,14 +14,14 @@ class FiCol
     /**
      * Alanın başlık açıklaması ( tablo için sütün başlığı , form için label alanı değeri / excelde başlık )
      */
-    public ?string $ofcTxHeader =  null;
+    public ?string $ofcTxHeader = null;
 
     public ?string $txLabel = null;
 
     /**
      * Objedeki alan adı (fieldName) ile db deki alan adı aynı degilse kullanılır.
      */
-    public ?string $ofcTxDbFieldName  = null;
+    public ?string $ofcTxDbFieldName = null;
 
     /**
      * Col Id olması için konuldu - tekil kodu
@@ -33,7 +33,7 @@ class FiCol
     //public ?integer printSize;
 
     // Alanın türünü belirtir (double,?string,date vs )
-    public ?string $colType  = null; //OzColType
+    public ?string $colType = null; //OzColType
 
     /**
      * Column Generic Type. Sütun nasıl bir tipte olduğunu gösterir. (Data Tipi degil)
@@ -43,7 +43,7 @@ class FiCol
     //public OzColType colGenType;
 
     // Formlarda default true olarak çalışır, false olursa düzenleme izni vermez
-    public ?bool $boEditable =null;
+    public ?bool $boEditable = null;
 
 
     /**
@@ -98,7 +98,7 @@ class FiCol
      * @param string|null $ofcTxFieldName
      * @param string|null $ofcTxHeader
      */
-    public function __construct(?string $ofcTxFieldName , ?string $ofcTxHeader = null)
+    public function __construct(?string $ofcTxFieldName = null, ?string $ofcTxHeader = null)
     {
         $this->ofcTxFieldName = $ofcTxFieldName;
         $this->ofcTxHeader = $ofcTxHeader;

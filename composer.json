@@ -2,9 +2,10 @@
   "name": "engtuncay/phputils",
   "description": "Tunc Php Utility Classes",
   "type": "library",
-  "version": "0.0.35",
+  "version": "0.0.36",
   "require": {
-    "php": ">=7.4"
+    "php": ">=7.4",
+    "ext-pdo": "*"
   },
   "require-dev": {
     "phpunit/phpunit": "^11.0",
