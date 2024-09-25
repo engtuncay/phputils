@@ -11,6 +11,7 @@ class FiCurl
 // Parameter description:
 // Method= POST, PUT, GET etc
 // Data= array("param" => "value") ==> index.php?param=value
+  
   public static function requestHttp($method, $url, $data = false, $headerParams)
   {
     $curl = curl_init();
