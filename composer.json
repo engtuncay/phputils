@@ -1,8 +1,8 @@
 {
   "name": "engtuncay/phputils",
-  "description": "Tunc Php Utility Classes",
+  "description": "Orak Yazılım Php Utility Classes",
   "type": "library",
-  "version": "0.0.36",
+  "version": "0.0.37",
   "require": {
     "php": ">=7.4",
     "ext-pdo": "*"
